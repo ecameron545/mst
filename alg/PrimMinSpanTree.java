@@ -49,16 +49,13 @@ public class PrimMinSpanTree implements MinSpanTree {
 
         	
         	for(Integer v: g.adjacents(vertex)) {
-        		System.out.println("current vertex: " + vertex);
-        		System.out.println("vertex: " + v + " has old parent: " + parents[v]);
+        		
 
 
         		if(v != vertex) {
         		double distOld = records[v].getDistance();
-        		System.out.println("distOld for vertex (" + v + "):" + distOld);
 
         		double distNew = g.weight(vertex, v);
-        		System.out.println("distNew for vertex (" + v + "):" + distNew);
 
         		
         		
@@ -69,7 +66,6 @@ public class PrimMinSpanTree implements MinSpanTree {
         	        pq.increaseKey(records[v]);
         			parents[v] = vertex;
         		}
-        		System.out.println("vertex: " + v + " has new parent: " + parents[v]);
         	}
         		
         	}
@@ -77,8 +73,6 @@ public class PrimMinSpanTree implements MinSpanTree {
 
         	WeightedEdge edge = new WeightedGraph.WeightedEdge(parents[vertex], vertex, records[vertex].getDistance(), true);
 
-        	System.out.println("weight added: " + edge.weight);
-        	System.out.println("__________________");
 
         	mstEdges.add(edge);
         	
