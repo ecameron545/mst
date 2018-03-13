@@ -54,7 +54,5 @@ public class KruskalMinSpanTree implements MinSpanTree {
                 System.out.println(e);
             }
             System.out.println(totalWeight);
-
     }    
-    
 }
