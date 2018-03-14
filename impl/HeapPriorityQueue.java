@@ -157,15 +157,16 @@ public class HeapPriorityQueue<E> extends Heap<E> implements PriorityQueue<E> {
     public E extractMax() {
     	if (internal[0] == null)
 			return null;
-
+    	
 		// Save the first position in the heap
-		E ret = internal[0];
+    	E ret = internal[0];
 		// Put the last item in the heap into the first position
-		internal[0] = internal[heapSize - 1];
+    	swap(0, (heapSize-1));
+    	// Decrease the heap size to take out the last item in the heap
+    	heapSize--;
 		// Call sinkKeyAt to make sure the heap is correct
-		sinkKeyAt(0);
-		heapSize--;
-		
+    	sinkKeyAt(0);
+
 		return ret;
     }
 
