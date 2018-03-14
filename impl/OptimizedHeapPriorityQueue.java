@@ -30,6 +30,7 @@ public class OptimizedHeapPriorityQueue<E extends HeapPositionAware> extends Hea
         internal = (E[]) new HeapPositionAware[maxSize];
         heapSize = 0;
         assert isHeap();
+
     }
 
     /**

@@ -32,7 +32,35 @@ public class OptimizedPrimMinSpanTree implements MinSpanTree {
         for (int i = 0; i < g.numVertices(); i++)
             parents[i] = -1;
         
-        //Add code here in part 7 
+        while (!pq.isEmpty()) {
+
+			HPAVertexRecord vr = pq.extractMax();
+
+			// if the lowest weight vertex (vr) has a parent, add it to the MST
+			if (parents[vr.id] != -1)
+				mstEdges.add(new WeightedEdge(parents[vr.id], vr.id, g.weight(parents[vr.id], vr.id), true));
+
+			// loop through the current vertex's adjacents
+			for (int vertex : g.adjacents(vr.id)) {
+
+				// record the weight of the current vertex (vr.id) to its
+				// adjacent vertex (vertex)
+				double weight = g.weight(vertex, vr.id);
+
+				// if the priority queue contians the adjacent vertex (which
+				// means it still needs
+				// to be added to the MST, and the weight to get to that vertex
+				// is less
+				// then the distance previously held there, update it.
+				if (pq.contains(records[vertex]) && weight < records[vertex].getDistance()) {
+					parents[vertex] = vr.id;
+					records[vertex].setDistance(weight);
+					pq.increaseKey(records[vertex]);
+				}
+
+			}
+
+		}
         return mstEdges;
     }
     

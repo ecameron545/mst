@@ -166,7 +166,6 @@ public class HeapPriorityQueue<E> extends Heap<E> implements PriorityQueue<E> {
     	heapSize--;
 		// Call sinkKeyAt to make sure the heap is correct
     	sinkKeyAt(0);
-
 		return ret;
     }
 
